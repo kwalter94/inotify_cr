@@ -39,8 +39,4 @@ class DirWatcher
 
     "unknown_event"
   end
-
-  private def parse_filename(name : Pointer(LibC::Char))
-
-  end
 end
