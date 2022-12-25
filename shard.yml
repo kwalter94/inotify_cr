@@ -1,0 +1,13 @@
+name: inotify_watch_cr
+version: 0.1.0
+
+authors:
+  - Walter Kaunda <walterkaunda@gmail.com>
+
+targets:
+  inotify_watch:
+    main: src/inotify_watch.cr
+
+crystal: 1.5.1
+
+license: MIT
