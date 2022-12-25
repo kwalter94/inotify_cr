@@ -12,13 +12,13 @@ Building this requires Crystal 1.6.1 or better and `Linux` with
 GNU libc
 
 ```sh
-crystal build src/inotify_watch.cr
+crystal build src/watch.cr
 ```
 
 ## Usage
 
 ```sh
-./inotify_watch path-to-directory
+./watch path-to-directory
 ```
 
 Once you start the application, it will log lines as below for

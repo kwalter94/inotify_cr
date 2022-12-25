@@ -30,7 +30,7 @@ lib LibInotify
 
   fun rm_watch = inotify_rm_watch(fd : LibC::Int, wd : LibC::Int) : LibC::Int
 
-  fun read(fd : LibC::Int, buf : Pointer(Void), count : LibC::SizeT) : LibC::SSizeT # return type should be ssize_t
+  fun read(fd : LibC::Int, buf : Pointer(Void), count : LibC::SizeT) : LibC::SSizeT
 end
 
 module LibInotifyHelpers

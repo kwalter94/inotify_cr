@@ -6,7 +6,7 @@ authors:
 
 targets:
   inotify_watch:
-    main: src/inotify_watch.cr
+    main: src/watch.cr
 
 crystal: 1.5.1
 

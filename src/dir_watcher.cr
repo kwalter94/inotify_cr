@@ -3,7 +3,7 @@ require "./lib_inotify"
 require "errno"
 require "path"
 
-class DirWatcher
+class InotifyCr::DirWatcher
   FILENAME_MAX_LENGTH = 255
 
   def initialize(dir_path : String)
