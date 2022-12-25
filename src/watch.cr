@@ -11,7 +11,11 @@ module InotifyCr
   end
 
   watcher = DirWatcher.new(ARGV[0])
-  watcher.watch do |event, path|
-    puts("#{event.upcase}: #{path}")
+  try do
+    watcher.watch do |event, path|
+      puts("#{event.upcase}: #{path}")
+    end
+  ensure
+    watcher.close()
   end
 end
