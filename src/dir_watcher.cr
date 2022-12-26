@@ -18,13 +18,16 @@ class InotifyCr::DirWatcher
 
   def watch
     loop do
-      event = uninitialized LibInotify::Event
-      status = LibInotify.read(@file_descriptor, pointerof(event), sizeof(LibInotify::Event) + FILENAME_MAX_LENGTH + 1)
+      event_p = Pointer
+                  .malloc(sizeof(LibInotify::Event) + FILENAME_MAX_LENGTH + 1, UInt8)
+                  .as(Pointer(LibInotify::Event))
+      status = LibInotify.read(@file_descriptor, event_p, sizeof(LibInotify::Event) + FILENAME_MAX_LENGTH + 1)
       raise "Failed to read inotify event: errno(#{Errno.value})" if status.negative?
 
-      filename = LibInotifyHelpers.extract_name(pointerof(event))
+      event_type = parse_event_type(event_p.value.mask)
+      filename = LibInotifyHelpers.extract_name(event_p)
 
-      yield parse_event_type(event.mask), String.new(filename)
+      yield event_type, String.new(filename)
     end
   end
 
